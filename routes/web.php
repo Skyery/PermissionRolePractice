@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin\IndexController;
+use App\Http\Controllers\Admin\PermissionController;
+use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +33,14 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->group(function () {
     Route::get('/', [IndexController::class, 'index'])->name('index');
+
+    // Roles Route
+    Route::resource('/roles', RoleController::class);
+
+    // Permissinos Route
+    Route::resource('/permissions', PermissionController::class);
+
+    // Users Route
 });
 
 require __DIR__.'/auth.php';
