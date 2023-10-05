@@ -5,7 +5,7 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <!-- component -->
                     <div class="flex justify-end mb-3">
-                        <a href="{{ route('admin.permissions.create') }}" class="px-4 py-2 text-white bg-green-600 hover:bg-green-700 focus:outline-none rounded-md">新增</a>
+                        <a href="{{ route('admin.permissions.create') }}" class="px-4 py-[6px] text-white bg-green-600 hover:bg-green-700 focus:outline-none rounded-md">新增</a>
                     </div>
 
                     <div class="overflow-hidden rounded-lg border border-gray-200 shadow-md">

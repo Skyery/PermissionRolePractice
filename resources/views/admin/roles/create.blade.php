@@ -18,8 +18,8 @@
                 </div>
 
                 <div class="flex mt-7">
-                    <button type="submit" class="px-4 py-2 text-white bg-green-600 hover:bg-green-700 focus:outline-none rounded-md me-3">新增</button>
-                    <a href="{{ route('admin.roles.index') }}" class="px-4 py-2 text-white bg-gray-600 hover:bg-gray-700 focus:outline-none rounded-md">取消</a>
+                    <button type="submit" class="px-4 py-[4px] text-white bg-green-600 hover:bg-green-700 focus:outline-none rounded-md me-3">新增</button>
+                    <a href="{{ route('admin.roles.index') }}" class="px-4 py-[6px] text-white bg-gray-600 hover:bg-gray-700 focus:outline-none rounded-md">取消</a>
                 </div>
             </form>
             
