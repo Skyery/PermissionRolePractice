@@ -5,7 +5,7 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <!-- component -->
                     <div class="flex justify-end mb-3">
-                        <a href="#" class="px-4 py-2 text-white bg-green-600 hover:bg-green-700 focus:outline-none rounded-md">新增</a>
+                        <a href="{{ route('admin.permissions.create') }}" class="px-4 py-2 text-white bg-green-600 hover:bg-green-700 focus:outline-none rounded-md">新增</a>
                     </div>
 
                     <div class="overflow-hidden rounded-lg border border-gray-200 shadow-md">
@@ -22,7 +22,7 @@
                                     <td class="px-6 py-4">{{ $permission->name }}</td>
                                     <td class="px-6 py-4">
                                         <div class="flex justify-end gap-4">
-                                            <a href="#" x-data="{ tooltip: 'Edite' }" >
+                                            <a href="{{ route('admin.permissions.edit', $permission->id) }}" x-data="{ tooltip: 'Edite' }" >
                                                 <svg
                                                     xmlns="http://www.w3.org/2000/svg"
                                                     fill="none"
@@ -39,7 +39,7 @@
                                                     />
                                                 </svg>
                                             </a>
-                                            <form method="POST" action="#" x-data="{ tooltip: 'Delete' }" onsubmit="return confirm('確認刪除該權限?');">
+                                            <form method="POST" action="{{ route('admin.permissions.destroy', $permission->id) }}" x-data="{ tooltip: 'Delete' }" onsubmit="return confirm('確認刪除該權限?');">
                                                 @csrf
                                                 @method("DELETE")
 

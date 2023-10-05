@@ -12,4 +12,35 @@ class PermissionController extends Controller
         $permissions = Permission::all();
         return view('admin.permissions.index', compact('permissions'));
     }
+
+    public function create () {
+        return view('admin.permissions.create');
+    }
+
+    public function store (Request $request) {
+        $validated = $request->validate(['name' => 'required|min:4']);
+        Permission::create($validated);
+
+        toastr()->success('新增 權限 成功!');
+        return to_route('admin.permissions.index');
+    }
+
+    public function edit (Permission $permission) {
+        return view('admin.permissions.edit', compact('permission'));
+    }
+
+    public function update (Request $request, Permission $permission) {
+        $validated = $request->validate(['name' => 'required|min:4']);
+        $permission->update($validated);
+
+        toastr()->success('更新 權限 成功!');
+        return to_route('admin.permissions.index');
+    }
+
+    public function destroy (Permission $permission) {
+        $permission->delete();
+
+        toastr()->success('刪除 權限 成功!');
+        return back();
+    }
 }
