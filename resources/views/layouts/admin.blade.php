@@ -32,13 +32,13 @@
                 </div>
                 <nav :class="{'block': open, 'hidden': !open}" class="flex-grow px-4 pb-4 md:block md:pb-0 md:overflow-y-auto">
                     <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 rounded-lg dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline
-                        {{ $currentRouteName === 'admin.roles.index' ? 'bg-gray-200 dark:bg-gray-700' : 'bg-transparent dark:bg-transparent' }}
+                        {{ Str::startsWith($currentRouteName, 'admin.roles.') ? 'bg-gray-200 dark:bg-gray-700' : 'bg-transparent dark:bg-transparent' }}
                         " href="{{ route('admin.roles.index') }}">Role</a>
                     <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 rounded-lg dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline
-                        {{ $currentRouteName === 'admin.permissions.index' ? 'bg-gray-200 dark:bg-gray-700' : 'bg-transparent dark:bg-transparent' }}
+                        {{ Str::startsWith($currentRouteName, 'admin.permissions.') ? 'bg-gray-200 dark:bg-gray-700' : 'bg-transparent dark:bg-transparent' }}
                         " href="{{ route('admin.permissions.index') }}">Permission</a>
                     <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 rounded-lg dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline
-                        {{ $currentRouteName === 'admin.users.index' ? 'bg-gray-200 dark:bg-gray-700' : 'bg-transparent dark:bg-transparent' }}
+                        {{ Str::startsWith($currentRouteName, 'admin.users.') ? 'bg-gray-200 dark:bg-gray-700' : 'bg-transparent dark:bg-transparent' }}
                         " href="#">Users</a>
                     <div @click.away="open = false" class="relative" x-data="{ open: false }">
                         <button @click="open = !open" class="flex flex-row items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg dark:bg-transparent dark:focus:text-white dark:hover:text-white dark:focus:bg-gray-600 dark:hover:bg-gray-600 md:block hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
