@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use League\CommonMark\Extension\DescriptionList\Parser\DescriptionTermContinueParser;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class PermissionController extends Controller
 {
@@ -26,7 +28,8 @@ class PermissionController extends Controller
     }
 
     public function edit (Permission $permission) {
-        return view('admin.permissions.edit', compact('permission'));
+        $roles = Role::all();
+        return view('admin.permissions.edit', compact('permission', 'roles'));
     }
 
     public function update (Request $request, Permission $permission) {
@@ -35,6 +38,28 @@ class PermissionController extends Controller
 
         toastr()->success('更新 權限 成功!');
         return to_route('admin.permissions.index');
+    }
+
+    public function assignRoles (Request $request, Permission $permission) {
+        if($permission->hasRole($request->role)){
+            toastr()->error('身分已存在!');
+            return back();
+        }
+
+        $permission->assignRole($request->role);
+        toastr()->success('分配 身分 成功!');
+        return back();
+    }
+
+    public function removeRoles (Permission $permission, Role $role) {
+        if($permission->hasRole($role)){
+            $permission->removeRole($role);
+            toastr()->success('移除 身分 成功!');
+            return back();
+        }
+
+        toastr()->error('身分不存在!');
+        return back();
     }
 
     public function destroy (Permission $permission) {

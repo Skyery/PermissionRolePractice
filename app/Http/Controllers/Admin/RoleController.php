@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use PhpParser\Node\Expr\FuncCall;
+use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
@@ -26,7 +28,8 @@ class RoleController extends Controller
     }
 
     public function edit (Role $role) {
-        return view('admin.roles.edit', compact('role'));
+        $permissions =  Permission::all();
+        return view('admin.roles.edit', compact('role', 'permissions'));
     }
 
     public function update (Request $request, Role $role) {
@@ -35,6 +38,28 @@ class RoleController extends Controller
 
         toastr()->success('更新 身分 成功!');
         return to_route('admin.roles.index');
+    }
+
+    public function givePermissions (Request $request, Role $role) {
+        if($role->hasPermissionTo($request->permission)){
+            toastr()->error('權限已存在!');
+            return back();
+        }
+
+        $role->givePermissionTo($request->permission);
+        toastr()->success('分配 權限 成功!');
+        return back();
+    }
+
+    public function revokePermissions (Role $role, Permission $permission) {
+        if($role->hasPermissionTo($permission)){
+            $role->revokePermissionTo($permission);
+            toastr()->success('移除 權限 成功!');
+            return back();
+        }
+
+        toastr()->error('權限不存在!');
+        return back();
     }
 
     public function destroy (Role $role) {
