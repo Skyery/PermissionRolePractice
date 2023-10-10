@@ -9,7 +9,7 @@
                         <table class="w-full border-collapse bg-white text-left text-sm text-gray-500">
                             <thead class="bg-gray-100">
                             <tr>
-                                <th scope="col" class="px-6 py-4 font-medium text-gray-900">Name</th>
+                                <th scope="col" class="px-6 py-4 font-medium text-gray-900">使用者帳號</th>
                                 <th scope="col" class="px-6 py-4 font-medium text-gray-900">Email</th>
                                 <th scope="col" class="px-6 py-4 font-medium text-gray-900"></th>
                             </tr>
@@ -21,7 +21,7 @@
                                     <td class="px-6 py-4">{{ $user->email }}</td>
                                     <td class="px-6 py-4">
                                         <div class="flex justify-end gap-4">
-                                            <a href="#" x-data="{ tooltip: 'Edite' }" >
+                                            <a href="{{ route('admin.users.show', $user->id) }}" x-data="{ tooltip: 'Edite' }" >
                                                 <svg
                                                     xmlns="http://www.w3.org/2000/svg"
                                                     fill="none"
@@ -42,7 +42,7 @@
                                                 $userRoles = $user->getRoleNames()->toArray();
                                             @endphp
                                             @unless (in_array('super admin', $userRoles) || in_array('admin', $userRoles))
-                                            <form method="POST" action="#" onsubmit="return confirm('確認刪除該用戶?')" x-data="{ tooltip: 'Delete' }">
+                                            <form method="POST" action="{{ route('admin.users.destroy', $user->id) }}" onsubmit="return confirm('確認刪除該用戶?')" x-data="{ tooltip: 'Delete' }">
                                                 @csrf
                                                 @method('DELETE')
 

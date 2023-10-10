@@ -47,6 +47,14 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->grou
 
     // Users Route
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
+    Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show');
+    Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+    // Users Roles
+    Route::post('/users/{user}/roles', [UserController::class, 'assignRoles'])->name('users.roles');
+    Route::delete('/users/{user}/roles/{role}', [UserController::class, 'removeRoles'])->name('users.roles.remove');
+    // Users Permissions
+    Route::post('/users/{user}/permissions', [UserController::class, 'givePermissions'])->name('users.permissions');
+    Route::delete('/users/{user}/permissions/{permission}', [UserController::class, 'revokePermissions'])->name('users.permissions.revoke');
 });
 
 require __DIR__.'/auth.php';
