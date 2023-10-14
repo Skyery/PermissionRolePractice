@@ -183,8 +183,7 @@ $ sudo apt-get install nginx -y
 
 # 安裝 Nginx & PHP 溝通套件
 $ sudo apt install nginx php8.2-fpm
-```  
-```
+
 # 設定 Nginx，用 nano 打開設定檔案
 $ sudo nano /etc/nginx/sites-available/default
 
@@ -277,7 +276,7 @@ $ sudo chmod 660 ./.env
 
 <a id="set_domain_and_ssl"></a>
 ### 套上 Domain 並使用 Nginx 設定 HTTPS 建立自行簽屬 SSL 憑證
-1. 在 [No-ip](https://my.noip.com/) 上申請 Domain，或者其他家的，這部分就不多做說明請左轉 [Google](https://www.google.com) 大神  
+1. 在 [No-ip](https://my.noip.com/) 上申請 Domain，或者其他家的，這部分就不多做說明請左轉 [Google](https://www.google.com) 大神。  
 2. SSL 的部分是使用 [Let’s Encrypt](https://letsencrypt.org/zh-tw/)，只是憑證的有效期限是90天，所以透過 [certbot](https://certbot.eff.org/) 自動續命。  
 ```
 # 安裝 Snapd
