@@ -27,7 +27,7 @@
 * [套上 Domain 並使用 Nginx 設定 HTTPS 建立自行簽屬 SSL 憑證](#set_domain_and_ssl)  
 
 <a id="create_vm"></a>
-#### 建立 GCP VM 執行個體
+### 建立 GCP VM 執行個體
 首先當然需要先註冊一個 [GCP](https://cloud.google.com/) 帳號，流程就不多說明了。  
 進入主控台後建立一個新的專案，找到 `Compute Engine` → `VM 執行個體`，建立執行個體。  
 
@@ -46,7 +46,7 @@
 ![防火牆設定](https://github.com/Skyery/PermissionRolePractice/blob/master/readme/GCP_VM%E5%9F%B7%E8%A1%8C%E5%80%8B%E9%AB%94_5.png?raw=true)  
 
 <a id="set_ssh"></a>
-#### 使用 SSH 建立使用者並設定安全殼層金鑰
+### 使用 SSH 建立使用者並設定安全殼層金鑰
 使用 [PuTTY](https://www.putty.org/) 的 `PuTTYgen` 建立金鑰，點選 `Generate` 後再紅框處晃動滑鼠，透過滑鼠軌跡產生金鑰。  
 
 ![產生金鑰](https://github.com/Skyery/PermissionRolePractice/blob/master/readme/SSH_1.png?raw=true)  
@@ -56,7 +56,7 @@
 
 ![產生金鑰](https://github.com/Skyery/PermissionRolePractice/blob/master/readme/SSH_2.png?raw=true)  
 
-再回到 GCP 控制台，點選你的 `主機名稱` → `編輯`，找到 `安全殼層金鑰` 點選 `新增項目` 將剛剛產生出來的那一長串key貼上，最後記得儲存，到這裡PuTTYgen就能關掉了。  
+再回到 [GCP](https://cloud.google.com/) 控制台，點選你的 `主機名稱` → `編輯`，找到 `安全殼層金鑰` 點選 `新增項目` 將剛剛產生出來的那一長串key貼上，最後記得儲存，到這裡PuTTYgen就能關掉了。  
 
 ![設定安全殼層](https://github.com/Skyery/PermissionRolePractice/blob/master/readme/SSH_3.png?raw=true)  
 
@@ -68,155 +68,126 @@
 最後嘗試 SSH 連線，點選 `Open` 輸入剛剛在PuTTYgen設定的用戶密碼。  
 
 <a id="deployment_environment"></a>
-#### 部屬環境及安裝所需套件
+### 部屬環境及安裝所需套件
 這邊接下來就是開始打指令了，~~指令恐懼的可以先 `Ctrl + D` 了。~~  
 
-1. 前置作業
-- 更新 apt
+#### 前置作業
 ```
+# 更新 apt
 $ sudo apt update && sudo apt -y upgrade
-```
-- 清除 apt 快取
-```
+
+# 清除 apt 快取
 $ sudo apt autoremove
-```
-- 檢查是否需要重新開機以啟用更新項目
-```
+
+# 檢查是否需要重新開機以啟用更新項目
 $ [ -f /var/run/reboot-required ] && sudo reboot -f
 ```  
 
-2. 安裝 PHP
-- 將 Surý PPA 新增至系統
+#### 安裝 PHP
 ```
+# 將 Surý PPA 新增至系統
 $ sudo add-apt-repository ppa:ondrej/php
-```
-- 執行 apt update 命令確認儲存庫是否正常運作
-```
+
+# 執行 apt update 命令確認儲存庫是否正常運作
 $ sudo apt update
-```
-- 安裝 PHP 8.2
-```
+
+# 安裝 PHP 8.2
 $ sudo apt install php8.2 -y
-```
-- 檢查 php 版本
-```
+
+# 檢查 php 版本
 $ php --version
-```
-- 安裝 PHP 常用的擴充套件
-```
+
+# 安裝 PHP 常用的擴充套件
 $ sudo apt-get install -y php8.2-cli php8.2-common php8.2-fpm php8.2-mysql php8.2-zip php8.2-gd php8.2-mbstring php8.2-curl php8.2-xml php8.2-bcmath
-```
-- 這個指令可以看到目前已載入的套清單
-```
+
+# 這個指令可以看到目前已載入的套清單
 $ php -m
 ```  
 
-3. 安裝 Composer
-- 透過 curl ，下載 Composer
+#### 安裝 Composer
 ```
+# 透過 curl ，下載 Composer
 $ curl -sS https://getcomposer.org/installer -o composer-setup.php
-```
-- 安裝 Composer
-```
+
+# 安裝 Composer
 $ sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
-```
-- 更新 Composer
-```
+
+# 更新 Composer
 $ sudo composer self-update
-```
-- 檢查 Composer 版本
-```
+
+# 檢查 Composer 版本
 $ composer -v
 ```  
 
-4. 安裝 MySQL-Server
-- 安裝 MySQL-Server
+#### 安裝 MySQL-Server
 ```
+# 安裝 MySQL-Server
 $ sudo apt install mysql-server
-```
-- 設定密碼
-```
+
+# 設定密碼
 $ sudo mysql_secure_installation
-```
-- 啟動 mysql-server
-```
+
+# 啟動 mysql-server
 $ sudo systemctl start mysql
-```
-- 檢查是否成功啟動
-```
+
+# 檢查是否成功啟動
 $ systemctl |grep mysql
-```
-- 以 root 身分進入mysql
-```
+
+# 以 root 身分進入mysql
 $ sudo mysql -u root
-```
-- 查看目前使用者以及身分驗證方式
-```
+
+# 查看目前使用者以及身分驗證方式
 SELECT User, Host, plugin FROM mysql.user;
-```
-- 建立新的使用者身分並設定密碼
-```
+
+# 建立新的使用者身分並設定密碼
 CREATE USER 'guest'@'localhost' IDENTIFIED WITH mysql_native_password BY 'your_password';
-```
-- 給予該身分所有DB權限
-```
+
+# 給予該身分所有DB權限
 GRANT ALL PRIVILEGES ON *.* TO 'guest'@'localhost';
-```
-- 查看 mysql-server 使用者
-```
+
+# 查看 mysql-server 使用者
 SELECT user,plugin,authentication_string FROM mysql.user;
-```
-- 以剛剛設定好的身分進入 mysql-server
-```
+
+# 以剛剛設定好的身分進入 mysql-server
 $ mysql -u guest -p{your_password}
-```
-- 建立資料庫
-```
+
+# 建立資料庫
 CREATE DATABASE {database_name}
-```
-- 查看目前的資料庫列表
-```
+
+# 查看目前的資料庫列表
 show databases;
-```
-- 選擇資料庫
-```
+
+# 選擇資料庫
 use {database_name};
-```
-- 查看目前的資料表列表
-```
+
+# 查看目前的資料表列表
 show tables; (現在是空的)
 ```  
 
-5. 安裝 Nginx
-- 安裝網路工具
+#### 安裝 Nginx
 ```
+# 安裝網路工具
 $ sudo apt install net-tools
-```
-- 查看 80 Port是否被占用
-```
+
+# 查看 80 Port是否被占用
 $ sudo netstat -utlnp | grep 80
-```
-- 因為 Ubuntu 映像檔內建 Apachi2 會占用 80 Port 所以先停掉它
-```
+
+# 因為 Ubuntu 映像檔內建 Apachi2 會占用 80 Port 所以先停掉它
 $ sudo systemctl stop apache2
-```
-- 查看Apachi狀態是否被停用
-```
+
+# 查看Apachi狀態是否被停用
 $ sudo systemctl status apache2
-```
-- 安裝 Nginx
-```
+
+# 安裝 Nginx
 $ sudo apt-get install nginx -y
-```
-- 安裝 Nginx & PHP 溝通套件
-```
+
+# 安裝 Nginx & PHP 溝通套件
 $ sudo apt install nginx php8.2-fpm
+```  
 ```
-- 設定 Nginx，用 nano 打開設定檔案
-```
+# 設定 Nginx，用 nano 打開設定檔案
 $ sudo nano /etc/nginx/sites-available/default
-```
-```
+
     #root /var/www/html;
     #修改為
     root /{path_to_your_laravel_project}/public;
@@ -243,54 +214,46 @@ $ sudo nano /etc/nginx/sites-available/default
         include snippets/fastcgi-php.conf;
         fastcgi_pass unix:/var/run/php/php8.2-fpm.sock;
     }
-```
-- 修改完成後，讓 Nginx 重新載入設定
-```
+
+# 修改完成後，讓 Nginx 重新載入設定
 $ sudo nginx -s reload
 ```  
 
-6. 安裝 NPX
-- 下載並安裝 npx
+#### 安裝 NPX
 ```
+# 下載並安裝 npx
 $ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-```
-- 將 bashrc 中的環境變數加載到 shell 中，以便 nvm 安裝及管理 node.js 版本
-```
+
+# 將 bashrc 中的環境變數加載到 shell 中，以便 nvm 安裝及管理 node.js 版本
 $ source ~/.bashrc
-```
-- 查看可以安裝的 node.js 版本
-```
+
+# 查看可以安裝的 node.js 版本
 $ nvm list-remote
-```
-- 安裝指定版本 node.js
-```
+
+# 安裝指定版本 node.js
 $ nvm install v16.20.2
-```
-- 檢查 node.js & npm 版本
-```
+
+# 檢查 node.js & npm 版本
 $ node -v
 $ npm -v
 ```  
 
-7. 透過 Git 部屬專案
-- 安裝 git
+#### 透過 Git 部屬專案
 ```
+# 安裝 git
 $ sudo apt-get install git
-```
-- 透過 git clone 將 git 上的專案 clone 至當前目錄
-```
+
+# 透過 git clone 將 git 上的專案 clone 至當前目錄
 $ git clone {url}
-```
-- 始化專案
-```
+
+# 始化專案
 $ composer install
 $ npm install
 $ npm run build
 $ mv .env.example .env
 $ sudo php artisan key:generate
-```
-- 設定 .env 內的資料庫設定
-```
+
+# 設定 .env 內的資料庫設定
 $ sudo nano /{path_to_your_laravel_project}/.env
 
 DB_CONNECTION=mysql
@@ -299,43 +262,37 @@ DB_PORT=3306
 DB_DATABASE={database_name}
 DB_USERNAME={user_name}
 DB_PASSWORD={user_password}
-```
-- 設定完成後就可以執行 migrate 指令建置 tables
-```
+
+# 設定完成後就可以執行 migrate 指令建置 tables
 $ php artisan migrate (完成後建議再進 mysql 檢查是否建置成功)
-```
-- 進入專案目錄下，修改目錄權限以供 Nginx 讀取
-```
+
+# 進入專案目錄下，修改目錄權限以供 Nginx 讀取
 $ cd /{path_to_your_laravel_project}
 $ sudo chown -R {user}.www-data .
 $ sudo chmod -R 2770 ./storage/
 $ sudo chmod 660 ./.env
 ```  
 
-到這裡總算是部屬完成，可以透過 GCP 提供的 `外部IP` 進入剛剛架設的網站了。  
+到這裡總算是部屬完成，可以透過 [GCP](https://cloud.google.com/) 提供的 `外部IP` 進入剛剛架設的網站了。  
 
 <a id="set_domain_and_ssl"></a>
-#### 套上 Domain 並使用 Nginx 設定 HTTPS 建立自行簽屬 SSL 憑證
+### 套上 Domain 並使用 Nginx 設定 HTTPS 建立自行簽屬 SSL 憑證
 1. 在 [No-ip](https://my.noip.com/) 上申請 Domain，或者其他家的，這部分就不多做說明請左轉 [Google](https://www.google.com) 大神  
-2. SSL 的部分是使用 [Let’s Encrypt](https://letsencrypt.org/zh-tw/)，只是憑證的有效期限是90天，所以透過 [certbot](https://certbot.eff.org/) 自動續命。
-- 安裝 Snapd
+2. SSL 的部分是使用 [Let’s Encrypt](https://letsencrypt.org/zh-tw/)，只是憑證的有效期限是90天，所以透過 [certbot](https://certbot.eff.org/) 自動續命。  
 ```
+# 安裝 Snapd
 $ sudo apt install snapd
-```
-- 使用 Snapd 安裝 certbot
-```
+
+# 使用 Snapd 安裝 certbot
 $ sudo snap install --classic certbot
-```
-- certbot 前置準備指令，用來確定 certbot 的指令能運作
-```
+
+# certbot 前置準備指令，用來確定 certbot 的指令能運作
 $ sudo ln -s /snap/bin/certbot /usr/bin/certbot
-```
-- 開始設定憑證，過程中會要輸入email、domain ..等
-```
+
+# 開始設定憑證，過程中會要輸入email、domain ..等
 $ sudo certbot --nginx
-```
-- Let’s Encrypt 的憑證有效期只有90天，到期前會自動更新憑證，可以用下列指令測試一下更新憑證是否正常
-```
+
+# [Let’s Encrypt](https://letsencrypt.org/zh-tw/) 的憑證有效期只有 90 天，到期前會自動更新憑證，可以用下列指令測試一下更新憑證是否正常
 $ sudo certbot renew --dry-run
 ```
 
