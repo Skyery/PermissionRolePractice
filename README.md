@@ -302,17 +302,39 @@ DB_PASSWORD={user_password}
 $ php artisan migrate (完成後建議再進 mysql 檢查是否建置成功)
 ```
 - 進入專案目錄下，修改目錄權限以供 Nginx 讀取
-```bash
-cd /{path_to_your_laravel_project}
-sudo chown -R {user}.www-data .
-sudo chmod -R 2770 ./storage/
-sudo chmod 660 ./.env
+```
+$ cd /{path_to_your_laravel_project}
+$ sudo chown -R {user}.www-data .
+$ sudo chmod -R 2770 ./storage/
+$ sudo chmod 660 ./.env
 ```  
 
-到這裡總算是部屬完成，可以透過 GCP 提供的 `外部IP` 進入剛剛架設的網站了。
+到這裡總算是部屬完成，可以透過 GCP 提供的 `外部IP` 進入剛剛架設的網站了。  
 
 <a id="set_domain_and_ssl"></a>
 #### 套上 Domain 並使用 Nginx 設定 HTTPS 建立自行簽屬 SSL 憑證
+1. 在 [No-ip](https://my.noip.com/) 上申請 Domain，或者其他家的，這部分就不多做說明請左轉 [Google](https://www.google.com) 大神  
+2. SSL 的部分是使用 [Let’s Encrypt](https://letsencrypt.org/zh-tw/)，只是憑證的有效期限是90天，所以透過 [certbot](https://certbot.eff.org/) 自動續命。
+- 安裝 Snapd
+```
+$ sudo apt install snapd
+```
+- 使用 Snapd 安裝 certbot
+```
+$ sudo snap install --classic certbot
+```
+- certbot 前置準備指令，用來確定 certbot 的指令能運作
+```
+$ sudo ln -s /snap/bin/certbot /usr/bin/certbot
+```
+- 開始設定憑證，過程中會要輸入email、domain ..等
+```
+$ sudo certbot --nginx
+```
+- Let’s Encrypt 的憑證有效期只有90天，到期前會自動更新憑證，可以用下列指令測試一下更新憑證是否正常
+```
+$ sudo certbot renew --dry-run
+```
 
 ## License
 
