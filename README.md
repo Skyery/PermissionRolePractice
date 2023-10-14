@@ -7,59 +7,39 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## PermissionRolePractice
+> 練習以 laravel 建置權限系統並部屬至GCP(Google Cloud Platform)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## DEMO
+不囉嗦，先上結果 [PermissionRolePractice](https://skyery.ddns.net)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 操作流程 & 簡述
+- [PermissionRolePractice](#permissionrolepractice)
+- [DEMO](#demo)
+- [操作流程 \& 簡述](#操作流程--簡述)
+    - [建立 GCP VM 執行個體](#建立-gcp-vm-執行個體)
+    - [使用 SSH 建立使用者並設定安全殼層金鑰](#使用-ssh-建立使用者並設定安全殼層金鑰)
+    - [部屬環境及安裝所需套件](#部屬環境及安裝所需套件)
+    - [套上 Domain 並使用 Nginx 設定 HTTPS 建立自行簽屬 SSL 憑證](#套上-domain-並使用-nginx-設定-https-建立自行簽屬-ssl-憑證)
+- [License](#license)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+在寫了1年多的 `VB.Net` 後，突然對其他框架感到好奇。
+就心血來潮的選了 `PHP & Laravel` 來嘗試看看這之間的差異性，剛好工作上正在重構有關 `用戶權限` 的系統，正好就拿這部份來嘗鮮了。
+<span style="font-size: 8px;">先打個預防針，本人非本科系是個自學半路出家的小白，如果讓你有快中風的操作還請見諒 XD。</span>
 
-## Learning Laravel
+<a id="create_vm"></a>
+#### 建立 GCP VM 執行個體
+首先當然需要先註冊一個 [GCP](https://cloud.google.com/) 帳號，流程就不多說明了。
+進入主控台後建立一個新的專案
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+<a id="set_ssh"></a>
+#### 使用 SSH 建立使用者並設定安全殼層金鑰
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+<a id="deployment_environment"></a>
+#### 部屬環境及安裝所需套件
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+<a id="set_domain_and_ssl"></a>
+#### 套上 Domain 並使用 Nginx 設定 HTTPS 建立自行簽屬 SSL 憑證
 
 ## License
 
