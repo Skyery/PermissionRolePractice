@@ -32,8 +32,15 @@
 <a id="create_vm"></a>
 #### 建立 GCP VM 執行個體
 首先當然需要先註冊一個 [GCP](https://cloud.google.com/) 帳號，流程就不多說明了。
-進入主控台後建立一個新的專案
-![test](https://github.com/Skyery/PermissionRolePractice/blob/master/readme/GCP_%E6%96%B0%E5%A2%9E%E5%B0%88%E6%A1%88.png?raw=true)
+<br>
+進入主控台後建立一個新的專案，找到 `Compute Engine` → `VM 執行個體`，建立執行個體。
+![VM執行個體](https://github.com/Skyery/PermissionRolePractice/blob/master/readme/GCP_VM%E5%9F%B7%E8%A1%8C%E5%80%8B%E9%AB%94_1.png?raw=true)
+![建立執行個體](https://github.com/Skyery/PermissionRolePractice/blob/master/readme/GCP_VM%E5%9F%B7%E8%A1%8C%E5%80%8B%E9%AB%94_2.png?raw=true)
+<br>
+設定主機名稱、在 `管理標記和標籤` 設定主機位置以及主機的規格。(我是選預設值，畢竟是練習..)
+![主機規格與區域](https://github.com/Skyery/PermissionRolePractice/blob/master/readme/GCP_VM%E5%9F%B7%E8%A1%8C%E5%80%8B%E9%AB%94_3.png?raw=true)
+
+
 
 <a id="set_ssh"></a>
 #### 使用 SSH 建立使用者並設定安全殼層金鑰
