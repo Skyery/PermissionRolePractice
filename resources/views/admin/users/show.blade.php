@@ -3,14 +3,14 @@
         <!-- Edit user -->
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <header class="flex justify-between items-center py-4">
-                <h1 class="text-2xl font-bold">編輯使用者</h1>
+                <h1 class="text-2xl font-bold">編輯用戶</h1>
             </header>
 
             <div class="overflow-hidden rounded-lg border border-gray-200 shadow-md mt-7">
                 <table class="w-full border-collapse bg-white text-left text-sm text-gray-500">
                     <thead class="bg-gray-100">
                     <tr>
-                        <th scope="col" class="px-6 py-4 font-medium text-gray-900">使用者帳號</th>
+                        <th scope="col" class="px-6 py-4 font-medium text-gray-900">用戶名稱</th>
                         <th scope="col" class="px-6 py-4 font-medium text-gray-900">Email</th>
                     </tr>
                     </thead>

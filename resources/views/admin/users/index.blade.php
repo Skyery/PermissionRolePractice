@@ -10,7 +10,7 @@
                 <table class="w-full border-collapse bg-white text-left text-sm text-gray-500">
                     <thead class="bg-gray-100">
                     <tr>
-                        <th scope="col" class="px-6 py-4 font-medium text-gray-900">使用者帳號</th>
+                        <th scope="col" class="px-6 py-4 font-medium text-gray-900">用戶名稱</th>
                         <th scope="col" class="px-6 py-4 font-medium text-gray-900">Email</th>
                         <th scope="col" class="px-6 py-4 font-medium text-gray-900"></th>
                     </tr>

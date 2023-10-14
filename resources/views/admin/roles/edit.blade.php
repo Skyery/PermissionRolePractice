@@ -73,7 +73,7 @@
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900 dark:text-gray-100">
                         <div class="mb-4">
-                            <label class="block text-gray-700 text-sm font-bold mb-2" for="permission">身分</label>
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="permission">權限</label>
                             <select class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500" name="permission" id="permission" autocomplete="permission">
                             @foreach ($permissions as $permission)
                                 <option value="{{ $permission->name }}">{{ $permission->name }}</option>
