@@ -2,12 +2,21 @@
     <div class="py-12 w-full">
         <!-- Edit role -->
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <h1 class="text-2xl font-bold my-7">編輯身分</h1>
+            <header class="flex justify-between items-center py-4">
+                <h1 class="text-2xl font-bold">編輯身分</h1>
+                <form method="POST" action="{{ route('admin.roles.destroy', $role->id) }}" x-data="{ tooltip: 'Delete' }" onsubmit="return confirm('確認刪除該身分?');" class="px-4 py-[6px] text-white bg-red-600 hover:bg-red-700 focus:outline-none rounded-md">
+                    @csrf
+                    @method("DELETE")
+
+                    <button type="submit">刪除</button>
+                </form>
+            </header>
+
             <form method="POST" action="{{ route('admin.roles.update', $role) }}">
                 @csrf
                 @method('PUT')
 
-                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mt-7">
                     <div class="p-6 text-gray-900 dark:text-gray-100">
                         <div class="mb-4">
                             <label class="block text-gray-700 text-sm font-bold mb-2" for="name">身分</label>
@@ -22,13 +31,16 @@
                     <a href="{{ route('admin.roles.index') }}" class="px-4 py-[6px] text-white bg-gray-600 hover:bg-gray-700 focus:outline-none rounded-md">取消</a>
                 </div>
             </form>
-            
         </div>
 
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-5"><div class="border-t dark:border-gray-700"></div></div>
+
         <!-- Role permission -->
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <h1 class="text-2xl font-bold my-7">權限分配</h1>
-            <div class="flex p-2">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-5">
+            <header class="flex justify-between items-center py-4">
+                <h1 class="text-2xl font-bold">權限分配</h1>
+            </header>
+            <div class="flex mt-7 mb-3">
                 @if ($role->permissions)
                     @foreach ($role->permissions as $role_permission)
                     <form method="POST" action="{{ route('admin.roles.permissions.revoke', [$role->id, $role_permission->id]) }}" onsubmit="return confirm('確認撤銷權限?')" class="me-3">
@@ -77,6 +89,5 @@
                 </div>
             </form>
         </div>
-
     </div>
 </x-admin-layout>

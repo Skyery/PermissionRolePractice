@@ -66,6 +66,6 @@ class RoleController extends Controller
         $role->delete();
 
         toastr()->success('刪除 身分 成功!');
-        return back();
+        return to_route('admin.roles.index');
     }
 }

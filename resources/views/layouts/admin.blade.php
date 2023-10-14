@@ -60,14 +60,14 @@
             <div @click.away="open = false" class="flex flex-col flex-shrink-0 w-full text-gray-700 bg-white md:w-64 dark:text-gray-200 dark:bg-gray-800" x-data="{ open: false }">
                 <nav :class="{'block': open, 'hidden': !open}" class="flex-grow px-4 pb-4 md:block md:pb-0 md:overflow-y-auto">
                     <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 rounded-lg dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline
-                        {{ Str::startsWith($currentRouteName, 'admin.roles.') ? 'bg-gray-200 dark:bg-gray-700' : 'bg-transparent dark:bg-transparent' }}
-                        " href="{{ route('admin.roles.index') }}">身分設定</a>
-                    <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 rounded-lg dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline
                         {{ Str::startsWith($currentRouteName, 'admin.permissions.') ? 'bg-gray-200 dark:bg-gray-700' : 'bg-transparent dark:bg-transparent' }}
                         " href="{{ route('admin.permissions.index') }}">權限設定</a>
                     <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 rounded-lg dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline
+                        {{ Str::startsWith($currentRouteName, 'admin.roles.') ? 'bg-gray-200 dark:bg-gray-700' : 'bg-transparent dark:bg-transparent' }}
+                        " href="{{ route('admin.roles.index') }}">身分設定</a>
+                    <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 rounded-lg dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline
                         {{ Str::startsWith($currentRouteName, 'admin.users.') ? 'bg-gray-200 dark:bg-gray-700' : 'bg-transparent dark:bg-transparent' }}
-                        " href="{{ route('admin.users.index') }}">帳號管理</a>
+                        " href="{{ route('admin.users.index') }}">用戶管理</a>
                 </nav>
             </div>
             <div class="flex w-full bg-slate-50">

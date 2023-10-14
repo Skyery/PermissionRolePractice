@@ -19,9 +19,8 @@ class UserController extends Controller
 
     public function show (User $user) {
         $roles = Role::all();
-        $permissions = Permission::all();
 
-        return view('admin.users.show', compact('user', 'roles', 'permissions'));
+        return view('admin.users.show', compact('user', 'roles'));
     }
 
     public function destroy (User $user) {
