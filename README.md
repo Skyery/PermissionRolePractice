@@ -46,18 +46,20 @@
 #### 使用 SSH 建立使用者並設定安全殼層金鑰
 使用 [PuTTY](https://www.putty.org/) 的 `PuTTYgen` 建立金鑰，點選 `Generate` 後再紅框處晃動滑鼠，透過滑鼠軌跡產生金鑰。  
 
-
+![產生金鑰](https://github.com/Skyery/PermissionRolePractice/blob/master/readme/SSH_1.png?raw=true)  
 
 金鑰產生後修改 `用戶名稱` 這會是之後 SSH 連線後的用戶名稱，再輸入 SSH 連線時的密碼。  
 最後別忘記點選 `Save public key` 及 `Save private key` 儲存公鑰及私鑰。
 
-
+![產生金鑰](https://github.com/Skyery/PermissionRolePractice/blob/master/readme/SSH_2.png?raw=true)  
 
 再回到 GCP 控制台，點選你的 `主機名稱` → `編輯`，找到 `安全殼層金鑰` 點選 `新增項目` 將剛剛產生出來的那一長串key貼上，最後記得儲存，到這裡PuTTYgen就能關掉了。  
 
+![設定安全殼層](https://github.com/Skyery/PermissionRolePractice/blob/master/readme/SSH_3.png?raw=true)  
+
+打開 `PuTTY` 在 `Host Name (or IP address)` 輸入 `用戶名稱@GCP對外IP`，左設選單找到 `Connection` → `SSH` → `Auth` → `Credentials` 在紅框處選到剛剛儲存下來的私鑰，再回到 `Session` 在 `Saved Sessions` 命名這個SSH連線後按下 `Save` 這樣下次就不用重新設定了。
 
 
-打開 `PuTTY` 在 `Host Name (or IP address)` 輸入 `用戶名稱@GCP對外IP`，左設選單找到 `Connection` → `SSH` → `Auth` → `Credentials` 在紅框處選到剛剛儲存下來的私鑰，再回到 `Session` 在 `Saved Sessions` 命名這個SSH連線後按下 `Save` 這樣下次就不用重新設定了。  
 
 <a id="deployment_environment"></a>
 #### 部屬環境及安裝所需套件
