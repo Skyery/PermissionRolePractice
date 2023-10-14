@@ -31,6 +31,7 @@
 #### 建立 GCP VM 執行個體
 首先當然需要先註冊一個 [GCP](https://cloud.google.com/) 帳號，流程就不多說明了。
 進入主控台後建立一個新的專案
+![test](https://github.com/Skyery/PermissionRolePractice/blob/master/readme/GCP_%E6%96%B0%E5%A2%9E%E5%B0%88%E6%A1%88.png?raw=true)
 
 <a id="set_ssh"></a>
 #### 使用 SSH 建立使用者並設定安全殼層金鑰
