@@ -8,7 +8,7 @@
 </p>
 
 ## PermissionRolePractice
-> laravel 10 | PHP 8.2
+> laravel 10 | PHP 8.2  
 > 練習以 laravel 建置權限系統並部屬至GCP(Google Cloud Platform)  
 
 ## DEMO
