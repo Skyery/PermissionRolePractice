@@ -11,7 +11,9 @@
 > 練習以 laravel 建置權限系統並部屬至GCP(Google Cloud Platform)  
 
 ## DEMO
-不囉嗦，先上結果 [PermissionRolePractice](https://skyery.ddns.net)  
+不囉嗦，先上結果 [PermissionRolePractice](https://skyery.ddns.net){:target="_blank"}  
+帳號: admin@gmail.com  
+密碼: password  
 
 ## 簡述 & 操作流程
 在寫了1年多的 `VB.Net` 後，突然對其他框架感到好奇。  
