@@ -19,9 +19,9 @@
 <small>先打個預防針，本人非本科系是個自學半路出家的小白，如果讓你有快中風的操作還請見諒 XD。</small>  
 
 * [建立 GCP VM 執行個體](#create_vm)
-* [使用 SSH 建立使用者並設定安全殼層金鑰](set_ssh)
-* [部屬環境及安裝所需套件](deployment_environment)
-* [套上 Domain 並使用 Nginx 設定 HTTPS 建立自行簽屬 SSL 憑證](set_domain_and_ssl)  
+* [使用 SSH 建立使用者並設定安全殼層金鑰](#set_ssh)
+* [部屬環境及安裝所需套件](#deployment_environment)
+* [套上 Domain 並使用 Nginx 設定 HTTPS 建立自行簽屬 SSL 憑證](#set_domain_and_ssl)  
 
 <a id="create_vm"></a>
 #### 建立 GCP VM 執行個體
@@ -57,9 +57,12 @@
 
 ![設定安全殼層](https://github.com/Skyery/PermissionRolePractice/blob/master/readme/SSH_3.png?raw=true)  
 
-打開 `PuTTY` 在 `Host Name (or IP address)` 輸入 `用戶名稱@GCP對外IP`，左設選單找到 `Connection` → `SSH` → `Auth` → `Credentials` 在紅框處選到剛剛儲存下來的私鑰，再回到 `Session` 在 `Saved Sessions` 命名這個SSH連線後按下 `Save` 這樣下次就不用重新設定了。
+打開 `PuTTY` 在 `Host Name (or IP address)` 輸入 `用戶名稱@GCP對外IP`。  
+左設選單找到 `Connection` → `SSH` → `Auth` → `Credentials` 在紅框處選到剛剛儲存下來的私鑰，再回到 `Session` 在 `Saved Sessions` 命名這個SSH連線後按下 `Save` 這樣下次就不用重新設定了。
 
+![設定PuTTY](https://github.com/Skyery/PermissionRolePractice/blob/master/readme/SSH_4.png?raw=true)  
 
+最後嘗試 SSH 連線，點選 `Open` 輸入剛剛在PuTTYgen設定的用戶密碼。  
 
 <a id="deployment_environment"></a>
 #### 部屬環境及安裝所需套件
