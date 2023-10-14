@@ -251,7 +251,7 @@ $ sudo nginx -s reload
 ```
 $ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 ```
-- 將 bashrc 中的環境變數加載到 shell 中，以便 nvm 安裝及管理node.js版本
+- 將 bashrc 中的環境變數加載到 shell 中，以便 nvm 安裝及管理 node.js 版本
 ```
 $ source ~/.bashrc
 ```
@@ -302,10 +302,11 @@ DB_PASSWORD={user_password}
 $ php artisan migrate (完成後建議再進 mysql 檢查是否建置成功)
 ```
 - 進入專案目錄下，修改目錄權限以供 Nginx 讀取
-```
-$ sudo chown -R {user}.www-data .
-$ sudo chmod -R 2770 ./storage/
-$ sudo chmod 660 ./.env
+```bash
+cd /{path_to_your_laravel_project}
+sudo chown -R {user}.www-data .
+sudo chmod -R 2770 ./storage/
+sudo chmod 660 ./.env
 ```  
 
 到這裡總算是部屬完成，可以透過 GCP 提供的 `外部IP` 進入剛剛架設的網站了。
