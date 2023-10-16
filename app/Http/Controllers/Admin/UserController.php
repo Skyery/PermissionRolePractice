@@ -52,26 +52,4 @@ class UserController extends Controller
         toastr()->error('身分不存在!');
         return back();
     }
-
-    public function givePermissions (Request $request, User $user) {
-        if($user->hasPermissionTo($request->permission)){
-            toastr()->error('權限已存在!');
-            return back();
-        }
-
-        $user->givePermissionTo($request->permission);
-        toastr()->success('分配 權限 成功!');
-        return back();
-    }
-    public function revokePermissions (User $user, Permission $permission) {
-        if($user->hasPermissionTo($permission)){
-            $user->revokePermissionTo($permission);
-
-            toastr()->success('移除 ccc 成功!');
-            return back();
-        }
-
-        toastr()->error('權限不存在!');
-        return back();
-    }
 }

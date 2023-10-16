@@ -52,9 +52,6 @@ Route::middleware(['auth', 'role:super admin|admin'])->name('admin.')->prefix('a
     // Users Roles
     Route::post('/users/{user}/roles', [UserController::class, 'assignRoles'])->name('users.roles');
     Route::delete('/users/{user}/roles/{role}', [UserController::class, 'removeRoles'])->name('users.roles.remove');
-    // Users Permissions
-    Route::post('/users/{user}/permissions', [UserController::class, 'givePermissions'])->name('users.permissions');
-    Route::delete('/users/{user}/permissions/{permission}', [UserController::class, 'revokePermissions'])->name('users.permissions.revoke');
 });
 
 require __DIR__.'/auth.php';

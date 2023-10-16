@@ -21,10 +21,30 @@
 就心血來潮的選了 `PHP & Laravel` 來嘗試看看這之間的差異性，剛好工作上正在重構有關 `用戶權限` 的系統，正好就拿這部份來嘗鮮了。  
 <small>先打個預防針，本人非本科系是個自學半路出家的小白，如果讓你有快中風的操作還請見諒 XD。</small>  
 
+* [後台簡述](#permission_role_user)
 * [建立 GCP VM 執行個體](#create_vm)
 * [使用 SSH 建立使用者並設定安全殼層金鑰](#set_ssh)
 * [部屬環境及安裝所需套件](#deployment_environment)
 * [套上 Domain 並使用 Nginx 設定 HTTPS 建立自行簽屬 SSL 憑證](#set_domain_and_ssl)  
+
+<a id="permission_role_user"></a>
+### 後台簡述
+主要目標設定在設計出：  
+* 讓管理者可以輕鬆的從後台管理用戶身分及權限
+* 使網站能透過 `權限系統` 做出用戶分流  
+  
+#### 使用套件 & 工具
+> Laravel Breeze / Spatie-Laravel Permission  
+> Laravel Blade / Tailwind CSS  
+
+#### Route 設計
+由 `root/admin` 作為後台的進入點並以 `middleware` 限制特定身分用戶進入。  
+1. Role - 身分
+於 `/roles` 路由中除了 `CRUD` 外還需包含 `權限(permission)` 的 give 以及 revoke。
+2. Permission - 權限
+於 `/permissions` 路由中除了 `CRUD` 外還需包含 `身分(role)` 的 assign 以及 remove。
+3. User - 用戶
+於 `/users` 需包含 `軟刪除用戶` 及 `身分(role)` 的分配 assign 以及 remove。  
 
 <a id="create_vm"></a>
 ### 建立 GCP VM 執行個體
@@ -187,7 +207,7 @@ $ sudo apt install nginx php8.2-fpm
 # 設定 Nginx，用 nano 打開設定檔案
 $ sudo nano /etc/nginx/sites-available/default
 
-    #root /var/www/html;
+    root /var/www/html;
     #修改為
     root /{path_to_your_laravel_project}/public;
 
