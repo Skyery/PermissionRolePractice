@@ -47,6 +47,8 @@ Route::middleware(['auth', 'role:super admin|admin'])->name('admin.')->prefix('a
 
     // Users Route
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
+    Route::post('/users', [UserController::class, 'store'])->name('users.store');
+    Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
     Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show');
     Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
     // Users Roles

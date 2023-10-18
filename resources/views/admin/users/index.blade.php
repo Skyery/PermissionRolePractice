@@ -3,7 +3,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <header class="flex justify-between items-center py-4">
                 <h1 class="text-2xl font-bold">用戶管理</h1>
-                {{-- <a href="#" class="px-4 py-[6px] text-white bg-green-600 hover:bg-green-700 focus:outline-none rounded-md">新增</a> --}}
+                <a href="{{ route('admin.users.create') }}" class="px-4 py-[6px] text-white bg-green-600 hover:bg-green-700 focus:outline-none rounded-md">新增</a>
             </header>
 
             <div class="overflow-hidden rounded-lg border border-gray-200 shadow-md mt-7">
