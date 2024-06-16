@@ -11,11 +11,6 @@
 > laravel 10 | PHP 8.2  
 > 練習以 laravel 建置權限系統並部屬至GCP(Google Cloud Platform)  
 
-## DEMO
-不囉嗦，先上結果 [PermissionRolePractice](https://skyery.ddns.net)  
-帳號: admin@gmail.com  
-密碼: password  
-
 ## 簡述 & 操作流程
 在寫了1年多的 `VB.Net` 後，突然想嘗試看看其他後端框架。  
 就選了 `PHP & Laravel` 來看看這之間的差異性，剛好工作上正在重構有關 `用戶權限` 的系統，正好就拿這部份來嘗鮮了。  
